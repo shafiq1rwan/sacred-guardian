@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://do831soc0hl7e"
+path="res://.godot/imported/Main Menu BGM.wav-368a7ec0ca55b5331bd1715f9c0727d1.sample"
+
+[deps]
+
+source_file="res://assets/bgm/Main Menu BGM.wav"
+dest_files=["res://.godot/imported/Main Menu BGM.wav-368a7ec0ca55b5331bd1715f9c0727d1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

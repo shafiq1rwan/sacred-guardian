@@ -12,11 +12,16 @@ config_version=5
 
 config/name="SacredGuardian"
 config/version="1.0.0"
+config/tags=PackedStringArray("development")
 run/main_scene="res://games/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/image="res://assets/splash/square-dark.png"
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=1000
+
+[audio]
+
+buses/default_bus_layout="res://games/default_bus_layout.tres"
 
 [display]
 
