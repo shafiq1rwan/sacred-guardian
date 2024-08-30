@@ -14,11 +14,3 @@ func _physics_process(delta):
 
 func _on_body_entered(_body):
 	queue_free()
-	
-	#const IMPACT = preload("res://assets/pistol/impact/impact.tscn")
-	#var impact = IMPACT.instantiate()
-	#get_parent().add_child(impact)
-	#impact.global_position = global_position
-	#
-	#if body.has_method("take_damage"):
-		#body.take_damage()

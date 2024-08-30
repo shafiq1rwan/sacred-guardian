@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhi4ut5yr4d8r"]
+[gd_scene load_steps=3 format=3 uid="uid://dhi4ut5yr4d8r"]
 
-[ext_resource type="Script" path="res://games/volume_slider.gd" id="1_nm8a6"]
 [ext_resource type="Script" path="res://games/settings.gd" id="1_squju"]
 [ext_resource type="AudioStream" uid="uid://do831soc0hl7e" path="res://assets/bgm/Main Menu BGM.wav" id="2_f207q"]
 
@@ -14,22 +13,6 @@ grow_vertical = 2
 script = ExtResource("1_squju")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="VolumeSlider" type="HSlider" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = 36.0
-offset_right = 112.0
-offset_bottom = 52.0
-grow_horizontal = 2
-grow_vertical = 2
-max_value = 1.0
-step = 0.001
-script = ExtResource("1_nm8a6")
 
 [node name="VolumeLabel2" type="Label" parent="CanvasLayer"]
 anchors_preset = 8
@@ -69,8 +52,26 @@ offset_bottom = 39.0
 theme_override_font_sizes/font_size = 30
 text = "Back to Main Menu"
 
+[node name="VolumeSlider" type="HSlider" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 20.0
+offset_right = 120.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.001
+
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_f207q")
 autoplay = true
+bus = &"BGM"
 
 [connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
