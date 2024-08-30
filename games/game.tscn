@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bocp8qvswpmwp"]
+[gd_scene load_steps=6 format=3 uid="uid://bocp8qvswpmwp"]
 
 [ext_resource type="Script" path="res://games/game.gd" id="1_ryaub"]
 [ext_resource type="PackedScene" uid="uid://dlffb5c3kdiei" path="res://games/player.tscn" id="2_7mv5o"]
 [ext_resource type="PackedScene" uid="uid://bh7jdahdwknic" path="res://games/ancient_tree.tscn" id="3_xq44r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7bas"]
+size = Vector2(33.5, 1040)
+
+[sub_resource type="Curve2D" id="Curve2D_d6ash"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 152.07, 96, 0, 0, 0, 0, 846.609, 96, 0, 0, 0, 0, 846.609, 336, 0, 0, 0, 0, 846.609, 552, 0, 0, 0, 0, 152.07, 552, 0, 0, 0, 0, 152.07, 320, 0, 0, 0, 0, 152.07, 96)
+}
+point_count = 7
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -18,7 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.473976, 0.473976, 0.473976, 1)
+color = Color(0.377919, 0.377919, 0.377919, 0.568627)
 
 [node name="PausedLabel" type="Label" parent="PauseMenu"]
 anchors_preset = 8
@@ -26,10 +35,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -105.5
+offset_top = -164.0
+offset_right = 105.5
+offset_bottom = -81.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
@@ -42,9 +51,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -88.0
-offset_top = 36.0
+offset_top = -60.0
 offset_right = 88.0
-offset_bottom = 86.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
@@ -57,62 +66,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -88.0
-offset_top = 91.0
+offset_top = -5.0
 offset_right = 88.0
-offset_bottom = 141.0
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Lobby"
-
-[node name="ExitButton" type="Button" parent="PauseMenu"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = 148.0
-offset_right = 88.0
-offset_bottom = 198.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "Exit"
-
-[node name="TemporaryMenu" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="Label" type="Label" parent="TemporaryMenu"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 60
-text = "Coming Soon"
-
-[node name="BacktoLobby" type="Button" parent="TemporaryMenu"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = 60.0
-offset_right = 64.0
-offset_bottom = 91.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "Back To Lobby
-"
 
 [node name="Player" parent="." instance=ExtResource("2_7mv5o")]
 position = Vector2(568, 320)
@@ -120,5 +80,47 @@ position = Vector2(568, 320)
 [node name="AncientTree" parent="." instance=ExtResource("3_xq44r")]
 position = Vector2(568, 288)
 
+[node name="WallBoundary" type="Node2D" parent="."]
+
+[node name="Wall" type="StaticBody2D" parent="WallBoundary"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBoundary/Wall"]
+position = Vector2(56, 336)
+shape = SubResource("RectangleShape2D_q7bas")
+
+[node name="Wall2" type="StaticBody2D" parent="WallBoundary"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBoundary/Wall2"]
+position = Vector2(1080, 344)
+shape = SubResource("RectangleShape2D_q7bas")
+
+[node name="Wall3" type="StaticBody2D" parent="WallBoundary"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBoundary/Wall3"]
+position = Vector2(552, 16)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_q7bas")
+
+[node name="Wall4" type="StaticBody2D" parent="WallBoundary"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBoundary/Wall4"]
+position = Vector2(568, 632)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_q7bas")
+
+[node name="RandomSpawn" type="Path2D" parent="."]
+position = Vector2(-22.1667, 0)
+scale = Vector2(1.19792, 1)
+curve = SubResource("Curve2D_d6ash")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="RandomSpawn"]
+unique_name_in_owner = true
+position = Vector2(152.07, 96)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
 [connection signal="pressed" from="PauseMenu/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="TemporaryMenu/BacktoLobby" to="." method="_on_backto_lobby_pressed"]
+[connection signal="pressed" from="PauseMenu/LobbyButton" to="." method="_on_lobby_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
