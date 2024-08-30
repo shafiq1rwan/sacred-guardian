@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlffb5c3kdiei"]
+[gd_scene load_steps=15 format=3 uid="uid://dlffb5c3kdiei"]
 
 [ext_resource type="Texture2D" uid="uid://cv4glq1d7xbla" path="res://assets/temporary/character/SeparateAnim/Walk.png" id="1_nghng"]
 [ext_resource type="Script" path="res://games/player.gd" id="1_qcfix"]
 [ext_resource type="Texture2D" uid="uid://lhsrk43lho70" path="res://assets/temporary/character/SeparateAnim/Idle.png" id="2_4j0pd"]
 [ext_resource type="PackedScene" uid="uid://bvjr8fvmbmplb" path="res://games/pistol.tscn" id="4_vd7fe"]
+[ext_resource type="Texture2D" uid="uid://dnxjg6e8nc5bx" path="res://assets/temporary/character/Faceset.png" id="5_1mjcd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ic6pg"]
 atlas = ExtResource("2_4j0pd")
@@ -56,6 +57,19 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_mgtww"]
 radius = 5.09902
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mp6o6"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upj4k"]
+bg_color = Color(0.309711, 0.687805, 0.480665, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_qcfix")
 
@@ -71,3 +85,29 @@ shape = SubResource("CircleShape2D_mgtww")
 zoom = Vector2(2, 2)
 
 [node name="Pistol" parent="." instance=ExtResource("4_vd7fe")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Faceset" type="Sprite2D" parent="HUD"]
+position = Vector2(34.5, 42.5)
+scale = Vector2(1.13158, 1.13158)
+texture = ExtResource("5_1mjcd")
+
+[node name="ProgressBar" type="ProgressBar" parent="HUD"]
+offset_left = 64.0
+offset_top = 40.0
+offset_right = 272.0
+offset_bottom = 64.0
+theme_override_styles/background = SubResource("StyleBoxFlat_mp6o6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_upj4k")
+min_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="HPLabel" type="Label" parent="HUD"]
+offset_left = 64.0
+offset_top = 16.0
+offset_right = 104.0
+offset_bottom = 39.0
+text = "HP
+"
