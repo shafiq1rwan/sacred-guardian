@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4655v8in1aci"]
+
+[ext_resource type="Texture2D" uid="uid://crgbndkvpo20u" path="res://assets/temporary/PlantSpike.png" id="1_7wwr3"]
+[ext_resource type="Script" path="res://games/plant_spike.gd" id="1_lgam4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljk45"]
+atlas = ExtResource("1_7wwr3")
+region = Rect2(0, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sewjn"]
+atlas = ExtResource("1_7wwr3")
+region = Rect2(24, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwww2"]
+atlas = ExtResource("1_7wwr3")
+region = Rect2(48, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_excjo"]
+atlas = ExtResource("1_7wwr3")
+region = Rect2(72, 0, 24, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aiv1f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljk45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sewjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwww2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_excjo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_le6md"]
+radius = 5.09902
+
+[node name="PlantSpike" type="Area2D"]
+script = ExtResource("1_lgam4")
+
+[node name="Projectile" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_aiv1f")
+frame_progress = 0.102431
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_le6md")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

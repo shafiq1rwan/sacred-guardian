@@ -1,11 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bocp8qvswpmwp"]
+[gd_scene load_steps=4 format=3 uid="uid://bocp8qvswpmwp"]
 
 [ext_resource type="Script" path="res://games/game.gd" id="1_ryaub"]
+[ext_resource type="PackedScene" uid="uid://dlffb5c3kdiei" path="res://games/player.tscn" id="2_7mv5o"]
+[ext_resource type="PackedScene" uid="uid://bh7jdahdwknic" path="res://games/ancient_tree.tscn" id="3_xq44r"]
 
 [node name="Game" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_ryaub")
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="PauseMenu"]
@@ -77,6 +81,7 @@ theme_override_font_sizes/font_size = 30
 text = "Exit"
 
 [node name="TemporaryMenu" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Label" type="Label" parent="TemporaryMenu"]
 anchors_preset = 8
@@ -109,4 +114,11 @@ theme_override_font_sizes/font_size = 30
 text = "Back To Lobby
 "
 
+[node name="Player" parent="." instance=ExtResource("2_7mv5o")]
+position = Vector2(568, 320)
+
+[node name="AncientTree" parent="." instance=ExtResource("3_xq44r")]
+position = Vector2(568, 288)
+
+[connection signal="pressed" from="PauseMenu/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="TemporaryMenu/BacktoLobby" to="." method="_on_backto_lobby_pressed"]

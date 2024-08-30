@@ -23,10 +23,15 @@ boot_splash/minimum_display_time=1000
 
 buses/default_bus_layout="res://games/default_bus_layout.tres"
 
+[autoload]
+
+GameManager="*res://games/game_manager.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="res://assets/cursor/pointer_c_shaded.png"
 
 [input]
 
@@ -73,5 +78,6 @@ pause={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
