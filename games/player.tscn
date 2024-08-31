@@ -64,7 +64,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upj4k"]
-bg_color = Color(0.309711, 0.687805, 0.480665, 1)
+bg_color = Color(1, 0.32439, 0.404262, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5

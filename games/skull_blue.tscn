@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dnmwsuglymwuv" path="res://assets/temporary/SkullBlue/SpriteSheet.png" id="1_jcxl2"]
 [ext_resource type="Script" path="res://games/skull_blue.gd" id="1_rvtr0"]
+[ext_resource type="AudioStream" uid="uid://bkimwgolp2y02" path="res://assets/sfx/DyingSound.wav" id="3_70to6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7jc4l"]
 atlas = ExtResource("1_jcxl2")
@@ -42,13 +43,18 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_qwh7f"]
 radius = 6.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ldikp"]
-radius = 44.0454
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1k3l"]
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gb73p"]
-bg_color = Color(0.378014, 1, 0.609164, 1)
+bg_color = Color(1, 0.791675, 0.894215, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 
 [node name="SkullBlue" type="CharacterBody2D"]
 collision_layer = 2
@@ -64,11 +70,6 @@ frame_progress = 0.109888
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_qwh7f")
 
-[node name="DetectionArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_ldikp")
-
 [node name="HPSkullBlue" type="ProgressBar" parent="."]
 offset_left = -15.0
 offset_top = -14.0
@@ -81,5 +82,7 @@ show_percentage = false
 
 [node name="ShootingPointMob" type="Marker2D" parent="."]
 
-[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_70to6")
+
+[connection signal="finished" from="DeathSFX" to="." method="_on_death_sfx_finished"]
