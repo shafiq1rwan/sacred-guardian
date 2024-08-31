@@ -82,6 +82,7 @@ position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_mgtww")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 zoom = Vector2(2, 2)
 
 [node name="Pistol" parent="." instance=ExtResource("4_vd7fe")]

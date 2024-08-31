@@ -84,5 +84,6 @@ show_percentage = false
 
 [node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_70to6")
+volume_db = -10.0
 
 [connection signal="finished" from="DeathSFX" to="." method="_on_death_sfx_finished"]
