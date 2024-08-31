@@ -97,6 +97,13 @@ offset_right = 278.0
 offset_bottom = 73.0
 color = Color(0.489622, 0.489622, 0.489622, 1)
 
+[node name="ColorRect2" type="ColorRect" parent="HUD"]
+offset_left = 952.0
+offset_top = 16.0
+offset_right = 1142.0
+offset_bottom = 72.0
+color = Color(0.489622, 0.489622, 0.489622, 1)
+
 [node name="Faceset" type="Sprite2D" parent="HUD"]
 position = Vector2(34.5, 42.5)
 scale = Vector2(1.13158, 1.13158)
@@ -120,3 +127,25 @@ offset_right = 104.0
 offset_bottom = 39.0
 text = "HP
 "
+
+[node name="WaveLabel" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_top = 20.0
+offset_right = -15.0
+offset_bottom = 43.0
+grow_horizontal = 0
+text = "Wave Level: 1"
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -76.0
+offset_top = 45.0
+offset_right = -15.0
+offset_bottom = 68.0
+grow_horizontal = 0
+text = "Score: 0"

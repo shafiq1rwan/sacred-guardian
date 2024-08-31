@@ -1377,3 +1377,5 @@ bus = &"BGM"
 [connection signal="pressed" from="PauseMenu/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMenu/LobbyButton" to="." method="_on_lobby_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="Player"]
