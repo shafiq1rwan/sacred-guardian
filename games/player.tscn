@@ -1,36 +1,35 @@
-[gd_scene load_steps=15 format=3 uid="uid://dlffb5c3kdiei"]
+[gd_scene load_steps=14 format=3 uid="uid://dlffb5c3kdiei"]
 
-[ext_resource type="Texture2D" uid="uid://cv4glq1d7xbla" path="res://assets/temporary/character/SeparateAnim/Walk.png" id="1_nghng"]
 [ext_resource type="Script" path="res://games/player.gd" id="1_qcfix"]
-[ext_resource type="Texture2D" uid="uid://lhsrk43lho70" path="res://assets/temporary/character/SeparateAnim/Idle.png" id="2_4j0pd"]
+[ext_resource type="Texture2D" uid="uid://t4qw1xesyrc0" path="res://assets/character/elf.png" id="2_j12we"]
 [ext_resource type="PackedScene" uid="uid://bvjr8fvmbmplb" path="res://games/pistol.tscn" id="4_vd7fe"]
 [ext_resource type="Texture2D" uid="uid://dnxjg6e8nc5bx" path="res://assets/temporary/character/Faceset.png" id="5_1mjcd"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ic6pg"]
-atlas = ExtResource("2_4j0pd")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_01fq7"]
+atlas = ExtResource("2_j12we")
+region = Rect2(0, 0, 37, 61)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gtbvv"]
-atlas = ExtResource("1_nghng")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_brj7m"]
+atlas = ExtResource("2_j12we")
+region = Rect2(0, 0, 37, 61)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qojk3"]
-atlas = ExtResource("1_nghng")
-region = Rect2(0, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc7jh"]
+atlas = ExtResource("2_j12we")
+region = Rect2(37, 0, 37, 61)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gojwa"]
-atlas = ExtResource("1_nghng")
-region = Rect2(0, 32, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb40t"]
+atlas = ExtResource("2_j12we")
+region = Rect2(74, 0, 37, 61)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uox3w"]
-atlas = ExtResource("1_nghng")
-region = Rect2(0, 48, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixxql"]
+atlas = ExtResource("2_j12we")
+region = Rect2(111, 0, 37, 61)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pw3g3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ic6pg")
+"texture": SubResource("AtlasTexture_01fq7")
 }],
 "loop": true,
 "name": &"idle",
@@ -38,16 +37,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gtbvv")
+"texture": SubResource("AtlasTexture_brj7m")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qojk3")
+"texture": SubResource("AtlasTexture_tc7jh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gojwa")
+"texture": SubResource("AtlasTexture_wb40t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uox3w")
+"texture": SubResource("AtlasTexture_ixxql")
 }],
 "loop": true,
 "name": &"walk",
@@ -82,8 +81,6 @@ position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_mgtww")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
-zoom = Vector2(2, 2)
 
 [node name="Pistol" parent="." instance=ExtResource("4_vd7fe")]
 collision_layer = 1
