@@ -3,6 +3,11 @@ extends Node2D
 @onready var wave_label = $Player/HUD/WaveLabel
 @onready var score_label = $Player/HUD/ScoreLabel
 
+@export var enemy_scenes: Array = [preload("res://games/angry_shrom.tscn"), preload("res://games/skull_blue.tscn")]
+
+func _ready() -> void:
+	randomize() # Ensures more random results from randi()
+
 func _on_backto_lobby_pressed():
 	get_tree().change_scene_to_file("res://games/lobby.tscn")
 
@@ -15,13 +20,18 @@ func _process(_delta):
 	wave_label.text = "Wave Level: " + str(GameManager.CURRENT_WAVE_LEVEL)
 	score_label.text = "Score: " + str(GameManager.SCORE)
 	
+	if GameManager.HP_PLAYER == 0:
+		Engine.time_scale = 0
+		%GameOver.visible = true
+	
 func _on_resume_button_pressed():
 	pause_menu.visible = false
 	Engine.time_scale = 1
 	GameManager.IS_PAUSED = false
 
 func _on_lobby_button_pressed():
-	get_tree().change_scene_to_file("res://games/lobby.tscn")
+	%GameOver.visible = false
+	get_tree().change_scene_to_file("res://games/main_menu.tscn")
 
 func _on_timer_timeout():
 	if GameManager.TOTAL_MOB_ONSTAGE <= GameManager.TOTAL_MINIMUM_MOB:
@@ -34,8 +44,13 @@ func _on_timer_timeout():
 		GameManager.TOTAL_MINIMUM_MOB += 2
 
 func spawnMob():
-	var spawnMOB = preload("res://games/skull_blue.tscn").instantiate()
+	# Select a random enemy from the array
+	var random_index = randi() % enemy_scenes.size()
+	var enemy_scene = enemy_scenes[random_index]
+	
+	# Instance the selected enemy
+	var enemy_instance = enemy_scene.instantiate()
 	%PathFollow2D.progress_ratio = randf()
-	spawnMOB.global_position = %PathFollow2D.global_position
-	add_child(spawnMOB)
+	enemy_instance.global_position = %PathFollow2D.global_position
+	add_child(enemy_instance)
 	GameManager.TOTAL_MOB_ONSTAGE += 1

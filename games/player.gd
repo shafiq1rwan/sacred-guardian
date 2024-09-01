@@ -1,11 +1,8 @@
 extends CharacterBody2D
-@onready var player_hp: ProgressBar = $HUD/PlayerHP
-@onready var ancient_tree_hp: ProgressBar = $HUD/AncientTreeHP
-
 
 func _ready() -> void:
-	player_hp.value = GameManager.HP_PLAYER
-	ancient_tree_hp.value = GameManager.ANCIENTTREE_HP
+	%PlayerHP.value = GameManager.HP_PLAYER
+	%AncientTreeHP.value = GameManager.ANCIENTTREE_HP
 
 func _physics_process(_delta):
 	var direction = Input.get_vector("left","right","up","down")
@@ -17,3 +14,7 @@ func _physics_process(_delta):
 		$AnimatedSprite2D.play("walk")
 	else:
 		$AnimatedSprite2D.play("idle")
+
+func take_damage_from_enemies():
+	GameManager.HP_PLAYER -= 2
+	%PlayerHP.value = GameManager.HP_PLAYER

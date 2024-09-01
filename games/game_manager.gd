@@ -15,3 +15,4 @@ var BULLET_RANGE = 800
 var SPEED_MOB = 2000
 var SCORE = 0
 var ANCIENTTREE_HP = 100.0
+var MOB_HP = 5

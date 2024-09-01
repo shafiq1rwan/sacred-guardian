@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bocp8qvswpmwp"]
+[gd_scene load_steps=17 format=3 uid="uid://bocp8qvswpmwp"]
 
 [ext_resource type="Script" path="res://games/game.gd" id="1_ryaub"]
 [ext_resource type="PackedScene" uid="uid://dlffb5c3kdiei" path="res://games/player.tscn" id="2_7mv5o"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://8gblqj7wqc6o" path="res://assets/particle/Rain.png" id="7_pdfsc"]
 [ext_resource type="Texture2D" uid="uid://cl5ueiertgi8q" path="res://assets/character/trees.png" id="8_xuh0e"]
 [ext_resource type="Texture2D" uid="uid://yw553r6oh8ss" path="res://assets/character/stone-2.png" id="9_iw445"]
+[ext_resource type="Texture2D" uid="uid://bfyhys6qj11mu" path="res://assets/character/stone.png" id="10_3v4pg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2f60a"]
 texture = ExtResource("2_mg1i3")
@@ -442,9 +443,9 @@ size = Vector2(33.5, 1040)
 
 [sub_resource type="Curve2D" id="Curve2D_d6ash"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 152.07, 96, 0, 0, 0, 0, 846.609, 96, 0, 0, 0, 0, 846.609, 336, 0, 0, 0, 0, 846.609, 552, 0, 0, 0, 0, 152.07, 552, 0, 0, 0, 0, 152.07, 320, 0, 0, 0, 0, 152.07, 96)
+"points": PackedVector2Array(0, 0, 0, 0, 118.678, 72, 0, 0, 0, 0, 485.981, 72, 0, 0, 0, 0, 846.606, 72, 0, 0, 0, 0, 846.609, 336, 0, 0, 0, 0, 846.606, 584, 0, 0, 0, 0, 499.338, 584, 0, 0, 0, 0, 118.678, 584, 0, 0, 0, 0, 118.678, 584, 0, 0, 0, 0, 118.678, 328, 0, 0, 0, 0, 118.678, 72)
 }
-point_count = 7
+point_count = 10
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8c81j"]
 particle_flag_disable_z = true
@@ -523,6 +524,48 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Lobby"
 
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.377919, 0.377919, 0.377919, 0.568627)
+
+[node name="GameOverLabel" type="Label" parent="GameOver"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.5
+offset_top = -164.0
+offset_right = 105.5
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Game Over"
+
+[node name="LobbyButton" type="Button" parent="GameOver"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -5.0
+offset_right = 88.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Lobby"
+
 [node name="Player" parent="." instance=ExtResource("2_7mv5o")]
 position = Vector2(573, 398)
 
@@ -564,7 +607,7 @@ curve = SubResource("Curve2D_d6ash")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="RandomSpawn"]
 unique_name_in_owner = true
-position = Vector2(152.07, 96)
+position = Vector2(118.678, 72)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
@@ -898,38 +941,84 @@ texture = ExtResource("8_xuh0e")
 
 [node name="Stone" type="Node2D" parent="."]
 
-[node name="Stone-2" type="Sprite2D" parent="."]
+[node name="Stone-2" type="Sprite2D" parent="Stone"]
 z_index = 100
 position = Vector2(319, 18)
 texture = ExtResource("9_iw445")
 
-[node name="Stone-3" type="Sprite2D" parent="."]
+[node name="Stone-3" type="Sprite2D" parent="Stone"]
 z_index = 100
 position = Vector2(420, 16)
 texture = ExtResource("9_iw445")
 
-[node name="Stone-4" type="Sprite2D" parent="."]
+[node name="Stone-4" type="Sprite2D" parent="Stone"]
 z_index = 100
 position = Vector2(538, 19)
 texture = ExtResource("9_iw445")
 
-[node name="Stone-5" type="Sprite2D" parent="."]
+[node name="Stone-5" type="Sprite2D" parent="Stone"]
 z_index = 100
 position = Vector2(687, 18)
 texture = ExtResource("9_iw445")
 
-[node name="Stone-6" type="Sprite2D" parent="."]
+[node name="Stone-6" type="Sprite2D" parent="Stone"]
 z_index = 100
 position = Vector2(857, 17)
 texture = ExtResource("9_iw445")
 
-[node name="Stone-7" type="Sprite2D" parent="."]
+[node name="Stone-7" type="Sprite2D" parent="Stone"]
 z_index = 100
 position = Vector2(969, 17)
 texture = ExtResource("9_iw445")
 
+[node name="Stone-8" type="Sprite2D" parent="Stone"]
+z_index = 100
+position = Vector2(210, 716)
+texture = ExtResource("9_iw445")
+
+[node name="Stone-9" type="Sprite2D" parent="Stone"]
+z_index = 100
+position = Vector2(311, 714)
+texture = ExtResource("9_iw445")
+
+[node name="Stone-10" type="Sprite2D" parent="Stone"]
+z_index = 100
+position = Vector2(429, 717)
+texture = ExtResource("9_iw445")
+
+[node name="Stone-11" type="Sprite2D" parent="Stone"]
+z_index = 100
+position = Vector2(578, 716)
+texture = ExtResource("9_iw445")
+
+[node name="Stone-12" type="Sprite2D" parent="Stone"]
+z_index = 100
+position = Vector2(748, 715)
+texture = ExtResource("9_iw445")
+
+[node name="Stone-13" type="Sprite2D" parent="Stone"]
+z_index = 100
+position = Vector2(860, 715)
+texture = ExtResource("9_iw445")
+
+[node name="Stone2" type="Sprite2D" parent="Stone"]
+z_index = 200
+position = Vector2(1040, 680)
+texture = ExtResource("10_3v4pg")
+
+[node name="Stone3" type="Sprite2D" parent="Stone"]
+z_index = 200
+position = Vector2(72, 696)
+texture = ExtResource("10_3v4pg")
+
+[node name="Stone4" type="Sprite2D" parent="Stone"]
+z_index = 200
+position = Vector2(776, 16)
+texture = ExtResource("10_3v4pg")
+
 [connection signal="pressed" from="PauseMenu/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMenu/LobbyButton" to="." method="_on_lobby_button_pressed"]
+[connection signal="pressed" from="GameOver/LobbyButton" to="." method="_on_lobby_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="Player"]

@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://cq8meund5si8l"]
+
+[ext_resource type="Script" path="res://games/angry_shrom.gd" id="1_1td8s"]
+[ext_resource type="Texture2D" uid="uid://buu3n4ot1rw5w" path="res://assets/character/mushroom.png" id="1_k58yp"]
+[ext_resource type="AudioStream" uid="uid://m7tnney8dr5h" path="res://assets/sfx/DyingSounds.wav" id="3_uvolq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiywr"]
+atlas = ExtResource("1_k58yp")
+region = Rect2(0, 0, 45, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2ri4"]
+atlas = ExtResource("1_k58yp")
+region = Rect2(45, 0, 45, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syvvu"]
+atlas = ExtResource("1_k58yp")
+region = Rect2(90, 0, 45, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmjec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tiywr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2ri4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syvvu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gjdry"]
+radius = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_41ga4"]
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvtlh"]
+bg_color = Color(1, 0.791675, 0.894215, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[node name="AngryShrom" type="CharacterBody2D"]
+script = ExtResource("1_1td8s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xmjec")
+frame_progress = 0.931518
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_gjdry")
+
+[node name="DeathSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uvolq")
+
+[node name="MobHP" type="ProgressBar" parent="."]
+offset_left = -16.0
+offset_top = -40.0
+offset_right = 13.0
+offset_bottom = -36.0
+theme_override_styles/background = SubResource("StyleBoxFlat_41ga4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dvtlh")
+max_value = 5.0
+show_percentage = false
+
+[connection signal="finished" from="DeathSFX" to="." method="_on_death_sfx_finished"]
