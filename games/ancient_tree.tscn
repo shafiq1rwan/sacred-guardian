@@ -1,40 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bh7jdahdwknic"]
+[gd_scene load_steps=4 format=3 uid="uid://bh7jdahdwknic"]
 
 [ext_resource type="Script" path="res://games/ancient_tree.gd" id="1_ybnum"]
 [ext_resource type="Texture2D" uid="uid://bhavgw7txm1kg" path="res://assets/character/sacred-tree.png" id="2_eflgd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n0g84"]
-radius = 11.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysglt"]
-bg_color = Color(0.6, 0.6, 0.6, 0.294118)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_egmbw"]
-bg_color = Color(1, 0.792157, 0.894118, 1)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
+radius = 35.0143
 
 [node name="AncientTree" type="StaticBody2D"]
 script = ExtResource("1_ybnum")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 14)
-shape = SubResource("CircleShape2D_n0g84")
-
-[node name="TreeHP" type="ProgressBar" parent="."]
-offset_left = -32.0
-offset_top = -126.0
-offset_right = 40.0
-offset_bottom = -116.0
-theme_override_styles/background = SubResource("StyleBoxFlat_ysglt")
-theme_override_styles/fill = SubResource("StyleBoxFlat_egmbw")
-show_percentage = false
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_eflgd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 55)
+shape = SubResource("CircleShape2D_n0g84")
