@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bvjr8fvmbmplb"]
 
 [ext_resource type="Script" path="res://games/pistol.gd" id="1_2xn5n"]
-[ext_resource type="Texture2D" uid="uid://b5h0heqcs3axq" path="res://assets/temporary/MagicWand.png" id="2_xk1oe"]
+[ext_resource type="Texture2D" uid="uid://nspbdhgd13oy" path="res://assets/character/staff.png" id="2_yetnt"]
 [ext_resource type="AudioStream" uid="uid://do6vfdose03q8" path="res://assets/sfx/MI_SFX 30.wav" id="3_l1kxd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bbud7"]
@@ -18,12 +18,14 @@ shape = SubResource("CircleShape2D_bbud7")
 [node name="WeaponPivot" type="Marker2D" parent="."]
 
 [node name="PistolSprite" type="Sprite2D" parent="WeaponPivot"]
-position = Vector2(26, 0)
-texture = ExtResource("2_xk1oe")
+position = Vector2(39, 0)
+rotation = -1.5708
+texture = ExtResource("2_yetnt")
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/PistolSprite"]
 unique_name_in_owner = true
-position = Vector2(9, 0)
+position = Vector2(-5.68248e-07, 13)
+rotation = 1.5708
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

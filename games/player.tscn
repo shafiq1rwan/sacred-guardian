@@ -84,6 +84,7 @@ shape = SubResource("CircleShape2D_mgtww")
 zoom = Vector2(2, 2)
 
 [node name="Pistol" parent="." instance=ExtResource("4_vd7fe")]
+z_index = 500
 collision_layer = 1
 collision_mask = 0
 
@@ -93,7 +94,7 @@ collision_mask = 0
 offset_left = 8.0
 offset_top = 16.0
 offset_right = 278.0
-offset_bottom = 128.0
+offset_bottom = 72.0
 color = Color(0.489622, 0.489622, 0.489622, 1)
 
 [node name="Faceset" type="Sprite2D" parent="HUD"]
@@ -112,6 +113,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_upj4k")
 
 [node name="AncientTreeHP" type="ProgressBar" parent="HUD"]
 unique_name_in_owner = true
+visible = false
 offset_left = 64.0
 offset_top = 96.0
 offset_right = 272.0
@@ -128,6 +130,7 @@ offset_bottom = 39.0
 text = "Player"
 
 [node name="HPLabel2" type="Label" parent="HUD"]
+visible = false
 offset_left = 64.0
 offset_top = 72.0
 offset_right = 113.0
