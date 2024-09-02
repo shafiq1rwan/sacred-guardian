@@ -9,6 +9,7 @@ var HP = 5
 
 func _ready():
 	hp_skull_blue.value = HP
+	add_to_group("enemies")
 
 func _physics_process(delta):
 	var direction = global_position.direction_to(player.global_position)

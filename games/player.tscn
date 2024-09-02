@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dlffb5c3kdiei"]
+[gd_scene load_steps=16 format=3 uid="uid://dlffb5c3kdiei"]
 
 [ext_resource type="Script" path="res://games/player.gd" id="1_qcfix"]
 [ext_resource type="Texture2D" uid="uid://t4qw1xesyrc0" path="res://assets/character/elf.png" id="2_j12we"]
@@ -69,6 +69,9 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2d7mm"]
+radius = 20.025
 
 [node name="Player" type="CharacterBody2D"]
 platform_floor_layers = 0
@@ -161,3 +164,12 @@ offset_right = -15.0
 offset_bottom = 68.0
 grow_horizontal = 0
 text = "Score: 0"
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 13)
+shape = SubResource("CircleShape2D_2d7mm")
+debug_color = Color(0.978551, 0, 0.395274, 0.42)
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

@@ -1,6 +1,6 @@
 extends Control
 
-@onready var bgm: AudioStreamPlayer = $BGM
+@onready var bgm: AudioStreamPlayer = $CanvasLayer/BGM
 
 func _ready() -> void:
 	bgm.play()

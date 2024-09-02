@@ -14,6 +14,7 @@ func _ready():
 	# Find the player in the scene (make sure the player node is named "Player")
 	player = get_node("/root/Game/Player")
 	$MobHP.value = GameManager.MOB_HP
+	add_to_group("enemies")
 
 func _process(delta: float):
 	var direction = global_position.direction_to(player.global_position)
