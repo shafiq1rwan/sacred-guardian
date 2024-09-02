@@ -16,5 +16,9 @@ func _physics_process(_delta):
 		$AnimatedSprite2D.play("idle")
 
 func take_damage_from_enemies():
+	# Your logic for reducing player health
+	var camera = get_viewport().get_camera_2d()
+	camera.start_shake()
+	
 	GameManager.HP_PLAYER -= 2
 	%PlayerHP.value = GameManager.HP_PLAYER

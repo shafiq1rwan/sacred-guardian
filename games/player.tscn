@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dlffb5c3kdiei"]
+[gd_scene load_steps=15 format=3 uid="uid://dlffb5c3kdiei"]
 
 [ext_resource type="Script" path="res://games/player.gd" id="1_qcfix"]
 [ext_resource type="Texture2D" uid="uid://t4qw1xesyrc0" path="res://assets/character/elf.png" id="2_j12we"]
+[ext_resource type="Script" path="res://games/camera_shake.gd" id="3_7jl4c"]
 [ext_resource type="PackedScene" uid="uid://bvjr8fvmbmplb" path="res://games/pistol.tscn" id="4_vd7fe"]
 [ext_resource type="Texture2D" uid="uid://dnxjg6e8nc5bx" path="res://assets/temporary/character/Faceset.png" id="5_1mjcd"]
 
@@ -70,6 +71,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="Player" type="CharacterBody2D"]
+platform_floor_layers = 0
 script = ExtResource("1_qcfix")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -80,8 +82,9 @@ animation = &"idle"
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_mgtww")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2DPlayer" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+script = ExtResource("3_7jl4c")
 
 [node name="Pistol" parent="." instance=ExtResource("4_vd7fe")]
 z_index = 500

@@ -57,6 +57,7 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
 [node name="SkullBlue" type="CharacterBody2D"]
+platform_floor_layers = 0
 script = ExtResource("1_rvtr0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
