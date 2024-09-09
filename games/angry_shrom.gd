@@ -44,6 +44,7 @@ func shoot_bullet():
 func take_damage():
 	HP -= 1
 	$MobHP.value = HP
+	$HurtPlayer.play("hurt")
 	
 	if(HP == 0):
 		$DeathSFX.play()

@@ -1,8 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://cq8meund5si8l"]
+[gd_scene load_steps=17 format=3 uid="uid://cq8meund5si8l"]
 
 [ext_resource type="Script" path="res://games/angry_shrom.gd" id="1_1td8s"]
 [ext_resource type="Texture2D" uid="uid://buu3n4ot1rw5w" path="res://assets/character/mushroom.png" id="1_k58yp"]
+[ext_resource type="Shader" path="res://games/angry_shrom.gdshader" id="2_a48ie"]
 [ext_resource type="AudioStream" uid="uid://m7tnney8dr5h" path="res://assets/sfx/DyingSounds.wav" id="3_uvolq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vlhl"]
+shader = ExtResource("2_a48ie")
+shader_parameter/active = true
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tiywr"]
 atlas = ExtResource("1_k58yp")
@@ -15,6 +21,10 @@ region = Rect2(45, 0, 45, 46)
 [sub_resource type="AtlasTexture" id="AtlasTexture_syvvu"]
 atlas = ExtResource("1_k58yp")
 region = Rect2(90, 0, 45, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl48t"]
+atlas = ExtResource("1_k58yp")
+region = Rect2(0, 0, 45, 46)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xmjec"]
 animations = [{
@@ -31,6 +41,14 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl48t")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gjdry"]
@@ -49,14 +67,77 @@ corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
+[sub_resource type="Animation" id="Animation_yk22n"]
+resource_name = "hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtPlayer:root_node")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [NodePath("..")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_1iuvb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtPlayer:root_node")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [NodePath("..")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81pp7"]
+_data = {
+"RESET": SubResource("Animation_1iuvb"),
+"hurt": SubResource("Animation_yk22n")
+}
+
 [node name="AngryShrom" type="CharacterBody2D"]
 platform_floor_layers = 0
 script = ExtResource("1_1td8s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_3vlhl")
 sprite_frames = SubResource("SpriteFrames_xmjec")
+animation = &"hurt"
 autoplay = "default"
-frame_progress = 0.628246
+frame_progress = 0.878491
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
@@ -74,5 +155,10 @@ theme_override_styles/background = SubResource("StyleBoxFlat_41ga4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_dvtlh")
 max_value = 5.0
 show_percentage = false
+
+[node name="HurtPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_81pp7")
+}
 
 [connection signal="finished" from="DeathSFX" to="." method="_on_death_sfx_finished"]
